@@ -1,6 +1,8 @@
 var currentTime = dayjs();
 var timerDisplayEl = document.getElementById("timer-display");
 var countdownGradEl = document.querySelector("#countdown-graduation");
+var noteBtn = document.querySelector("#note-btn");
+var noteDisplayEl = document.getElementById("note-display");
 
 console.log(currentTime.format("MMM D, YYYY"));
 
@@ -22,3 +24,17 @@ function calculateGraduationDate() {
 }
 
 displayCurrentDate();
+
+function writeNotes(event) {
+  event.preventDefault();
+  //   console.log(event);
+  var notesText = document.getElementById("notesText").value.trim();
+  //   textContent seems to OVERRIDE existing text
+  //   noteDisplayEl.textContent = notesText;
+  var cardDiv = document.createElement("div");
+  cardDiv.setAttribute("class", "text-success");
+  cardDiv.textContent = notesText;
+  noteDisplayEl.appendChild(cardDiv);
+}
+
+noteBtn.addEventListener("click", writeNotes);

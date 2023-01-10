@@ -16,18 +16,33 @@
         </div>
     </nav>
     <br />
-    <main>
-    <!-- This can be where the notes reside maybe? -->
-    <div class="d-flex justify-content-center">
-        <div class="card col-md-6">
-            <div class="card-body text-center" id="timer-display"></div>
-            <div class="card-body text-center" id="countdown-graduation">
-                <!-- Display the time left before graduation! -->
+
+    <header>
+        <div class="d-flex justify-content-center">
+            <div class="card col-md-6">
+                <div class="card-body text-center" id="timer-display"></div>
+                <div class="card-body text-center" id="countdown-graduation">
+                    <!-- Display the time left before graduation! -->
+                </div>
             </div>
         </div>
+    </header>
+    <br />
+    <br />
+    <main class="row container">
+    <!-- This can be where the notes reside maybe? -->
+    <div class="col-md-5">
+        <h3>Type in my notes</h3>
+        <form>
+            <textarea class="form-control" placeholder="Leave a comment here" id="notesText"></textarea>
+            <button type="submit" class="btn btn-primary" id="note-btn">Submit</button>
+        </form>
     </div>
-        
+    <section class="col-md-7" id='note-display'>
+        <h3>My notes for class!</h3>
+    </section>
     </main>
+
 
 
 
