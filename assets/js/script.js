@@ -3,6 +3,8 @@ var timerDisplayEl = document.getElementById("timer-display");
 var countdownGradEl = document.querySelector("#countdown-graduation");
 var noteBtn = document.querySelector("#note-btn");
 var noteDisplayEl = document.getElementById("note-display");
+var gucciBtn = document.getElementById("gucci-gang");
+var gucciTextEl = document.getElementById("gucci-txt");
 
 console.log(currentTime.format("MMM D, YYYY"));
 
@@ -31,6 +33,7 @@ function calculateGraduationDate() {
 
 function displayExistingNotes() {
   var returningData = JSON.parse(localStorage.getItem("studentNotes"));
+  makeCards(returningData);
   console.log(returningData);
 }
 
@@ -47,10 +50,13 @@ function writeNotes(event) {
     return;
   }
   putInLocalStorage(notesText);
+  makeCards(notesText);
+}
 
+function makeCards(notes) {
   var cardDiv = document.createElement("div");
   cardDiv.setAttribute("class", "text-success");
-  cardDiv.textContent = notesText;
+  cardDiv.textContent = notes;
   noteDisplayEl.appendChild(cardDiv);
 }
 
@@ -64,6 +70,20 @@ function putInLocalStorage(notes) {
   }
 }
 
+function gucciGangCheck() {
+  var returnNumber = Math.floor(Math.random() * 2);
+  var gucciTextDisplay = document.createElement("div");
+  if (returnNumber === 1) {
+    // It seems to be appending ENDLESSLY I NEED TO MAYBE FIX THAT
+    gucciTextDisplay.textContent = "GUCCI GANG";
+    gucciTextEl.appendChild(gucciTextDisplay);
+  } else {
+    gucciTextDisplay.textContent = "NOT GUCCI GANG";
+    gucciTextEl.appendChild(gucciTextDisplay);
+  }
+}
+
+gucciBtn.addEventListener("click", gucciGangCheck);
 noteBtn.addEventListener("click", writeNotes);
 
 // Call this function to make certain functions run on page-load
